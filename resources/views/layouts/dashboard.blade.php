@@ -148,7 +148,7 @@
                         @endforeach
                     </div>
                     <hr class="separate">
-                    <div class="ad_block" style="background-image: url({{ asset('assets/img/hogyx.png') }})"></div>
+                    <a href="https://www.hogyx.io" class="ad_block" style="background-image: url({{ asset('assets/img/hogyx.png') }})"></a>
                     <div class="ad_block">
                         <!-- Рекламный блок в боковой панели -->
                         <ins class="adsbygoogle"
