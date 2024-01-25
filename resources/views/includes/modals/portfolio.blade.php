@@ -12,7 +12,7 @@
                 @foreach($portfolio->getMedia('preview') as $image)
                     <li>
                         <input type="radio" id="slide{{ $loop->index }}" name="slide" checked>
-                        <label for="slide{{ $loop->i }}"></label>
+                        <label for="slide{{ $loop->index }}"></label>
                         <img src="{{ $image->getFullUrl() }}" alt="{{ $portfolio->title }}">
                     </li>
                 @endforeach
