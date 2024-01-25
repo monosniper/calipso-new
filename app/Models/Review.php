@@ -12,9 +12,12 @@ class Review extends Model
     use HasFactory, Likeable;
 
     protected $fillable = [
+        'reviewable_type',
+        'reviewable_id',
         'title',
         'content',
         'rating',
+        'user_id',
     ];
 
     /**

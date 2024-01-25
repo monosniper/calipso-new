@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReviewRequest;
 use App\Http\Resources\ReviewResource;
+use App\Models\Lot;
 use App\Models\Review;
+use App\Models\User;
 use EloquentBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -40,7 +43,24 @@ class ReviewApiController extends Controller
      */
     public function store(Request $request)
     {
-        $review = Review::create($request->validated());
+        $reviewable_types = [
+            'lot' => Lot::findOrFail($request->reviewable_id),
+            'user' => User::findOrFail($request->reviewable_id),
+        ];
+
+        $reviewable = $reviewable_types[$request->reviewable_type];
+
+        $review = new Review;
+
+        $review->title = $request->title;
+        $review->content = $request->input('content');
+        $review->rating = $request->rating;
+        $review->user_id = $request->user_id;
+
+        $review->reviewable()->associate($reviewable);
+
+        $review->save();
+
         return response()->json(new ReviewResource($review));
     }
 

@@ -53,7 +53,7 @@
             </div>
         @else
             <a href="{{route('freelance.employer', $order->user->id)}}" class="order-author">
-                <div class="order-author-avatar" style="background-image: url({{$order->user->getAvatar()}})"></div>
+                <div class="order-author-avatar" style='background-image: url("{{$order->user->getAvatar()}}")'></div>
                 <div class="order-author-name">{{$order->user->fullName}}</div>
             </a>
         @endif
