@@ -1,5 +1,5 @@
 <div class="modal_wrapper" id="feedback">
-    <div class="modal" style="background-image: url('{{ asset('assets/img/feedback.png') }}')">
+    <div class="modal">
         <div class="modal_logo">
             @include('includes.svg', ['name' => 'logo'])
         </div>
