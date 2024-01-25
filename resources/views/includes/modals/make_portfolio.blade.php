@@ -13,7 +13,7 @@
             <input value="{{request()->old('link')}}" type="url" name="link" placeholder="{{__('modals.add_portfolio.link')}}:" class="modal_field">
             <input value="{{request()->old('tag')}}" type="text" name="tag" placeholder="{{__('modals.add_portfolio.tag')}}:" class="modal_field">
             <textarea required minlength="10" maxlength="500" name="description" placeholder="{{__('modals.add_portfolio.description')}}" id="description" cols="30" rows="5" class="modal_field">{{request()->old('description')}}</textarea>
-            <input required value="{{request()->old('preview')}}" type="file" name="preview" id="preview">
+            <input required value="{{request()->old('preview')}}" multiple type="file" name="preview[]" id="preview">
             <button class="submit" type="submit"></button>
         </form>
         <div class="modal_footer">

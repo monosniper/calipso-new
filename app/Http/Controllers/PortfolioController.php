@@ -47,9 +47,13 @@ class PortfolioController extends Controller
 
         $portfolio->save();
 
-        $portfolio
-            ->addMedia($request->preview)
-            ->toMediaCollection('preview');
+        if($request->preview) {
+            foreach ($request->preview as $image) {
+                $portfolio
+                    ->addMedia($image)
+                    ->toMediaCollection('preview');
+            }
+        }
 
         return back()->with('success', 'Портфолио создано успешно');
     }
