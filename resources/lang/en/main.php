@@ -15,6 +15,7 @@ return [
     'my_lots' => 'My lots',
     'lots' => 'Lots',
     'my_orders' => 'My orders',
+    'write_message' => 'Write a message',
     'orders' => 'Orders',
     'pay_history' => 'Pay history',
     'delete' => 'Delete',

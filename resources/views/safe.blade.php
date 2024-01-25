@@ -51,11 +51,8 @@
         </div>
 
         <div class="white_block safe-body">
-            <a href="{{route('chat.add.conversation', $order->freelancer_id)}}" class="webz_btn">
-                <div class="profile_menu_item_icon">
-                    @include('includes.svg', ['name' => 'chat'])
-                </div>
-                <div class="profile_menu_item_title ">{{__('main.write')}}</div>
+            <a style="margin-bottom: 1rem" href="{{route('chat.add.conversation', $order->user_id === auth()->id() ? $order->freelancer_id : $order->user_id)}}" class="webz_btn">
+                <div class="profile_menu_item_title ">{{__('main.write_message')}}</div>
             </a>
 
             <div class="safe-tab {{$order->status === App\Models\Safe::ACTIVE_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::ACTIVE_STATUS}}">
