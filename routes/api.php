@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\FeedBackApiController;
 use App\Http\Controllers\Api\OfferApiController;
 use App\Http\Controllers\Api\QuestionApiController;
+use App\Http\Controllers\Api\ReviewApiController;
 use App\Http\Controllers\Api\TagApiController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\PayController;
@@ -41,7 +42,7 @@ Route::group(['as' => 'api.'], function() {
         Route::apiResources([
             'lots' => LotApiController::class,
             'orders' => OrderApiController::class,
-            'reviews' => OrderApiController::class,
+            'reviews' => ReviewApiController::class,
             'users' => UserApiController::class,
             'tags' => TagApiController::class,
             'offers' => OfferApiController::class,
