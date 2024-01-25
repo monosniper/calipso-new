@@ -59,71 +59,65 @@
             </div>
             <div class="safe-tab {{$order->status === App\Models\Safe::AGREEMENT_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::AGREEMENT_STATUS}}">
                 <h3 class="safe-body-title">{{__('order.details')}}:</h3>
-                @if($order->safe->completedStatus(App\Models\Safe::AGREEMENT_STATUS))
+                @if($order->status === App\Models\Safe::AGREEMENT_STATUS && $order->user_id === auth()->id())
+                    <p class="safe-body-description">{{__('safe.upload_or_write_tz')}}</p>
+                    <form action="{{route('forms.safe')}}" method="post" enctype="multipart/form-data" class="form form-big">
+                        @csrf
 
+                        <input type="hidden" name="safe_id" value="{{$order->safe->id}}">
 
-                    @if($order->status === App\Models\Safe::AGREEMENT_STATUS && $order->user_id === auth()->id())
-                        <p class="safe-body-description">{{__('safe.upload_or_write_tz')}}</p>
-                        <form action="{{route('forms.safe')}}" method="post" enctype="multipart/form-data" class="form form-big">
-                            @csrf
-
-                            <input type="hidden" name="safe_id" value="{{$order->safe->id}}">
-
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-12">
-                                    <input type="file"
-                                           id="files"
-                                           name="files[]"
-                                           multiple
-                                           data-allow-reorder="true"
-                                           data-max-file-size="100MB"
-                                           data-max-files="10">
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                <input type="file"
+                                       id="files"
+                                       name="files[]"
+                                       multiple
+                                       data-allow-reorder="true"
+                                       data-max-file-size="100MB"
+                                       data-max-files="10">
                             </div>
-
-
-                            <div class="form-row">
-                                <label class="form-label" for="tz">
-                                    {{__('safe.tz')}}
-
-                                    @include('includes.help', ['message' => __('safe.tz_help')])
-                                </label>
-                                <textarea id="tz" minlength="100" maxlength="5000" name="tz" class="form-field">{!! $order->safe->tz ?? request()->old('tz') !!}</textarea>
-                            </div>
-
-                            <div class="safe-body-footer">
-                                <button type="submit" class="webz_btn bordered white">{{__('main.save')}}</button>
-                            </div>
-
-                            <div class="safe-alert">{{__('safe.agreement.before_next')}}</div>
-                        </form>
-                    @else
-                        <div class="files">
-                            @forelse($order->safe->media as $file)
-                                <a title="{{$file->file_name}}" download href="{{$file->getUrl()}}" class="file">
-                                    <i class="file-icon fas {{$order->getMimeTypeIcon($file->mime_type)}}"></i>
-                                    <span class="file-name">{{mb_strimwidth($file->file_name, 0, 14).'...'}}</span>
-                                    <span class="file-size">{{$file->human_readable_size}}</span>
-                                </a>
-                            @empty
-
-                            @endforelse
                         </div>
 
-                        <p>{{$order->safe->tz}}</p>
 
-                        @if($order->user_id !== auth()->id())
-                            @if($order->safe->tz === '' || !$order->safe->media->count())
-                                <div class="safe-alert">{{__('safe.agreement.before_next_freelancer')}}</div>
-                            @endif
+                        <div class="form-row">
+                            <label class="form-label" for="tz">
+                                {{__('safe.tz')}}
 
-                            <div class="safe-body-footer">
-                                <a href="{{route('freelance.orders.agree', $order->id)}}" {{$order->safe->tz === '' || !$order->safe->media->count() ? 'disabled' : ''}} type="submit" class="webz_btn bordered white">{{__('safe.agree_and_continue')}}</a>
-                            </div>
-                        @endif
-                    @endif
+                                @include('includes.help', ['message' => __('safe.tz_help')])
+                            </label>
+                            <textarea id="tz" minlength="100" maxlength="5000" name="tz" class="form-field">{!! $order->safe->tz ?? request()->old('tz') !!}</textarea>
+                        </div>
+
+                        <div class="safe-body-footer">
+                            <button type="submit" class="webz_btn bordered white">{{__('main.save')}}</button>
+                        </div>
+
+                        <div class="safe-alert">{{__('safe.agreement.before_next')}}</div>
+                    </form>
                 @else
+                    <div class="files">
+                        @forelse($order->safe->media as $file)
+                            <a title="{{$file->file_name}}" download href="{{$file->getUrl()}}" class="file">
+                                <i class="file-icon fas {{$order->getMimeTypeIcon($file->mime_type)}}"></i>
+                                <span class="file-name">{{mb_strimwidth($file->file_name, 0, 14).'...'}}</span>
+                                <span class="file-size">{{$file->human_readable_size}}</span>
+                            </a>
+                        @empty
 
+                        @endforelse
+                    </div>
+
+                    <p>{{$order->safe->tz}}</p>
+
+                    @if($order->user_id !== auth()->id())
+                        @if($order->safe->tz === '' || !$order->safe->media->count())
+                            <div class="safe-alert">{{__('safe.agreement.before_next_freelancer')}}</div>
+                        @endif
+
+                        <div class="safe-body-footer">
+                            <a href="{{route('freelance.orders.agree', $order->id)}}" {{$order->safe->tz === '' || !$order->safe->media->count() ? 'disabled' : ''}} type="submit" class="webz_btn bordered white">{{__('safe.agree_and_continue')}}</a>
+                        </div>
+                    @endif
                 @endif
             </div>
             <div class="safe-tab {{$order->status === App\Models\Safe::RESERVATION_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::RESERVATION_STATUS}}">
