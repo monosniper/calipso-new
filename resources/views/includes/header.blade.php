@@ -50,7 +50,7 @@
                         <div class="header_balance dropdown_toggler">${{auth()->user()->balanceFloat}}</div>
                         <div class="dropdown_menu">
                             <a class="dropdown_menu_item replenish-link">{{__('main.replenish_by_card')}}</a>
-                            <a class="dropdown_menu_item">{{__('main.replenish_by_crypto')}}</a>
+                            <a class="dropdown_menu_item" modal-wrapper="#crypto">{{__('main.replenish_by_crypto')}}</a>
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                         <div class="header_balance dropdown_toggler">${{auth()->user()->balanceFloat}}</div>
                         <div class="dropdown_menu">
                             <a class="dropdown_menu_item replenish-link">{{__('main.replenish_by_card')}}</a>
-                            <a class="dropdown_menu_item">{{__('main.replenish_by_crypto')}}</a>
+                            <a class="dropdown_menu_item" modal-wrapper="#crypto">{{__('main.replenish_by_crypto')}}</a>
                         </div>
                     </div>
                 @endauth
