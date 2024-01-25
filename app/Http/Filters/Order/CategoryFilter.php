@@ -18,7 +18,7 @@ class CategoryFilter extends Filter
      */
     public function apply(Builder $builder, $value): Builder
     {
-        $categories = Category::where('slug', $value)->first()->ancestorsAndSelf();
+        $categories = Category::where('slug', $value)->first()->descendantsAndSelf();
         $slugs = $categories->pluck('slug');
 
         return $builder->whereHas('category', function (Builder $query) use($slugs) {
