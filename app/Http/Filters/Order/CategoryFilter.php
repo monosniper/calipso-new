@@ -2,6 +2,7 @@
 
 namespace App\Http\Filters\Order;
 
+use App\Models\Category;
 use Fouladgar\EloquentBuilder\Support\Foundation\Contracts\Filter;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -17,8 +18,11 @@ class CategoryFilter extends Filter
      */
     public function apply(Builder $builder, $value): Builder
     {
-        return $builder->whereHas('category', function (Builder $query) use($value) {
-            $query->where('slug', $value);
+        $categories = Category::where('slug', $value)->first()->ancestorsAndSelf();
+        $slugs = $categories->pluck('slug');
+
+        return $builder->whereHas('category', function (Builder $query) use($slugs) {
+            $query->whereIn('slug', $slugs);
         });
     }
 }
