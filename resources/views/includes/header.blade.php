@@ -187,8 +187,10 @@
 
 @unless(auth()->check())
     @include('includes.modals.sign')
-    @include('includes.modals.crypto')
+
 @endunless
+
+@include('includes.modals.crypto')
 
 @isset($normalize)
     @if ($normalize)
