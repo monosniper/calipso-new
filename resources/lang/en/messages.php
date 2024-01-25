@@ -4,6 +4,7 @@ return [
     'thanks_for_report' => 'Thanks! Your opinion is very important to us.',
     'success_freelancer' => 'You became a freelancer',
     'feedback' => 'Thanks! Your opinion is very important to us, we will reply to you within 3 working days.',
+    'withdraw' => 'Your application is accepted',
     'lots' => [
         'updated' => 'The lot has been updated and sent for re-checking.',
     ],

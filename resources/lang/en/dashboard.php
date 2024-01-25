@@ -13,4 +13,7 @@ return [
     'no_orders_for' => 'User :name has no orders.',
     'no_wishlist_lots' => 'User :name has no wish lots.',
     'no_basket_lots' => 'You haven\'t added lots to the cart yet.',
+    'to_withdraw' => 'Withdraw',
+    'amount' => 'Amount',
+    'withdraw_text' => 'Withdrawals are made regularly once a week. If you have not received your money after a week, please contact support, we will definitely help you.',
 ];

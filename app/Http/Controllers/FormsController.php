@@ -36,6 +36,10 @@ class FormsController extends Controller
         return back()->with('success', __('messages.feedback'));
     }
 
+    public function withdraw(Request $request) {
+        return back()->with('success', __('messages.withdraw'));
+    }
+
     public function resume(UpdateResumeRequest $request) {
         $user = auth()->user();
 
