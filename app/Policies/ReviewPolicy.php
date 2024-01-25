@@ -69,6 +69,7 @@ class ReviewPolicy
 //        });
 //
 //        return $completed_order->exists() && !$review->exists();
+        return true;
     }
 
     /**
