@@ -240,6 +240,7 @@ class OrderController extends Controller
 
         if($offer->isSafe) {
             $order->safe->setStatus(Safe::AGREEMENT_STATUS);
+            $order->setStatus(Order::AGREEMENT_STATUS);
 
             return redirect()->route('freelance.safe', $order->id);
         } else {
