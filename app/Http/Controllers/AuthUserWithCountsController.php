@@ -15,9 +15,7 @@ Trait AuthUserWithCountsController
     }
 
     public function getAuthUserWithCounts($find=true) {
-        $user = $this->users->withCount(['lots', 'orders', 'orders as orders_work_count' => function($query) {
-            return $query->inWorkOrAgreement();
-        }]);
+        $user = $this->users->withCount(['lots', 'orders']);
 
         return $find ? $user->findOrFail(auth()->id()) : $user;
     }

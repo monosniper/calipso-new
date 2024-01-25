@@ -80,6 +80,14 @@ class User extends Authenticatable implements HasMedia, Wallet, WalletFloat, Cus
         });
     }
 
+    public function orders_work_count() {
+        return Order::where(function ($query) {
+            $query
+                ->where('user_id', $this->id)
+                ->orWhere('freelancer_id', $this->id);
+        })->InWorkOrAgreement()->count();
+    }
+
     /**
      * Scope a query to only include employers.
      *

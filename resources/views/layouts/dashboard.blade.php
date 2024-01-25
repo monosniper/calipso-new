@@ -85,7 +85,7 @@
                 'route' => 'work',
                 'icon' => 'briefcase',
                 'name' => __('main.work'),
-                'count' => $user->orders_work_count,
+                'count' => $user->orders_work_count(),
             ],
             // [
             //    'route' => 'cabinet',
