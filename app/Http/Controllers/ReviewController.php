@@ -57,10 +57,10 @@ class ReviewController extends Controller
             ])->exists()) {
                 abort(403, 'Вы уже написали отзыв');
             }
-            dd(User::class, $request->reviewable_type);
-            if($request->reviewable_type === User::class) {
+            dd($request->reviewable_type == User::class);
+            if($request->reviewable_type == User::class) {
                 $user->cannot('create', [Review::class, $request->reviewable_id]) && abort(403);
-            } else if($request->reviewable_type === Lot::class) {
+            } else if($request->reviewable_type == Lot::class) {
                 if(!$user->hasPurchasedLot($request->reviewable_id)) {
                     abort(403, 'Отзыв можно написать только после покупки');
                 }
