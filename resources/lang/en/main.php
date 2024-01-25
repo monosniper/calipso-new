@@ -11,6 +11,7 @@ return [
     'resume' => 'Resume',
     'about_self' => 'О себе',
     'portfolio' => 'Portfolio',
+    'min_crypto' => 'The minimal amount is $50',
     'my_lots' => 'My lots',
     'lots' => 'Lots',
     'my_orders' => 'My orders',
