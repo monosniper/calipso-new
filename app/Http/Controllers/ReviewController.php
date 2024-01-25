@@ -45,13 +45,11 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request): RedirectResponse
     {
-        // ONLY FOR NOW
-        $reviewable_type = User::class;
-
-
         !auth()->check() && abort(401, 'Для начала нужно войти в аккаунт');
 
         $user = auth()->user();
+
+        $reviewable_type = $request->reviewable_type === 'lot' ? Lot::class : User::class;
 
         if(!$user->isAdmin) {
             if(Review::where([
@@ -62,21 +60,21 @@ class ReviewController extends Controller
                 abort(403, 'Вы уже написали отзыв');
             }
 
-            if($reviewable_type == User::class) {
-                $user->cannot('create', [Review::class, $request->reviewable_id]) && abort(403);
-            } else if($reviewable_type == Lot::class) {
-                if(!$user->hasPurchasedLot($request->reviewable_id)) {
+            if($request->reviewable_type === 'user') {
+                $user->cannot('create', [Review::class, $reviewable_type]) && abort(403);
+            } else if($request->reviewable_type === 'lot') {
+                if(!$user->hasPurchasedLot($reviewable_type)) {
                     abort(403, 'Отзыв можно написать только после покупки');
                 }
             }
         }
 
         $reviewable_types = [
-            Lot::class => Lot::findOrFail($request->reviewable_id),
-            User::class => User::findOrFail($request->reviewable_id),
+            'lot' => Lot::findOrFail($request->reviewable_id),
+            'user' => User::findOrFail($request->reviewable_id),
         ];
 
-        $reviewable = $reviewable_types[$reviewable_type];
+        $reviewable = $reviewable_types[$request->reviewable_type];
 
         $review = new Review;
 
@@ -89,7 +87,7 @@ class ReviewController extends Controller
 
         $review->save();
 
-        if($reviewable_type === User::class) {
+        if($request->reviewable_type === User::class) {
             if($review->isNegative()) {
                 $reviewable->decreaseRating(config('calipso.freelance.rating.review'));
             } else {
