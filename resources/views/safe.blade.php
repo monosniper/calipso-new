@@ -123,9 +123,9 @@
             <div class="safe-tab {{$order->status === App\Models\Safe::RESERVATION_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::RESERVATION_STATUS}}">
                 <h3 class="safe-body-title">{{__('order.status.'.App\Models\Safe::RESERVATION_STATUS)}}:</h3>
                 <p class="safe-body-description">{{__('safe.reservation' . ($order->user_id !== auth()->id() ? '_freelancer' : ''))}}</p>
-                @unless($order->safe->completedStatus(App\Models\Safe::RESERVATION_STATUS) || $order->user_id !== auth()->id())
+                @if($order->user_id === auth()->id() && !$order->safe->completedStatus(App\Models\Safe::RESERVATION_STATUS))
                     <a href="{{route('freelance.orders.reserve', $order->id)}}" class="webz_btn">{{__('safe.reserve')}}</a>
-                @endunless
+                @endif
             </div>
             <div class="safe-tab {{$order->status === App\Models\Safe::WORK_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::WORK_STATUS}}">
                 <h3 class="safe-body-title">{{__('order.status.'.App\Models\Safe::WORK_STATUS)}}:</h3>
