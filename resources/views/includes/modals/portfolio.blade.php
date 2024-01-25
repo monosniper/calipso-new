@@ -1,4 +1,4 @@
-<div class="modal_wrapper" modal-animation-timeout="500" modal-animation="bounceIn" modal-dismiss-animation="zoomOut" id="portfolio-{{$portfolio->id}}">
+<div class="modal_wrapper"  id="portfolio-{{$portfolio->id}}">
     <div class="modal animate__faster">
         <div class="modal_title small">
             <span>{{$portfolio->title}}</span>
@@ -7,7 +7,17 @@
             </span>
         </div>
 
-        <img src="{{$portfolio->getPreview()}}" alt="{{$portfolio->title}}" class="portfolio-img">
+        <div class="portfolio-img">
+            <ul class="slider ">
+                @foreach($portfolio->getMedia('preview') as $image)
+                    <li>
+                        <input type="radio" id="slide{{ $loop->i }}" name="slide" checked>
+                        <label for="slide{{ $loop->i }}"></label>
+                        <img src="{{ $image->getFullUrl() }}" alt="{{ $portfolio->title }}">
+                    </li>
+                @endforeach
+            </ul>
+        </div>
 
         <p class="portfolio-description">{{$portfolio->description}}</p>
 
