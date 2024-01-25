@@ -274,6 +274,8 @@
 .portfolio-img {
   max-width: 90vw;
   width: 700px;
+  height: 300px;
+  position: relative;
 }
 .portfolio-description {
   font-size: 14px;
