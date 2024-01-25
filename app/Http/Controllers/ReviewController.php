@@ -70,8 +70,8 @@ class ReviewController extends Controller
         }
 
         $reviewable_types = [
-            'lot' => Lot::findOrFail($request->reviewable_id),
-            'user' => User::findOrFail($request->reviewable_id),
+            'lot' => Lot::find($request->reviewable_id),
+            'user' => User::find($request->reviewable_id),
         ];
 
         $reviewable = $reviewable_types[$request->reviewable_type];
