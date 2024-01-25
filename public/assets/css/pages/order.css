@@ -111,6 +111,9 @@ body {
   font-size: 15px;
   line-height: 1.7em;
 }
+.single-order-description span {
+  white-space: break-spaces;
+}
 .single-order-author-avatar {
   display: flex;
   justify-content: center;

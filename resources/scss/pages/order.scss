@@ -137,6 +137,10 @@ body {
         color: #3d424d;
         font-size: 15px;
         line-height: 1.7em;
+
+        span {
+            white-space: break-spaces;
+        }
     }
 
     &-author {
