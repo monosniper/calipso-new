@@ -46,29 +46,29 @@ class ReviewPolicy
      */
     public function create(User $user, $user_id): bool
     {
-        $review = Review::forUsers()->where([
-            ['user_id', $user->id],
-            ['reviewable_type', User::class],
-            ['reviewable_id', $user_id],
-        ]);
-
-        $completed_order = Order::whereDate(
-            'completed_at', '>=', Carbon::now()->subWeek()
-        );
-
-        $completed_order->where(function($query) use($user_id, $user) {
-            $query
-                ->where([
-                    ['user_id', $user_id],
-                    ['freelancer_id', $user->id],
-                ])
-                ->orWhere([
-                    ['user_id', $user->id],
-                    ['freelancer_id', $user_id],
-                ]);
-        });
-
-        return $completed_order->exists() && !$review->exists();
+//        $review = Review::forUsers()->where([
+//            ['user_id', $user->id],
+//            ['reviewable_type', User::class],
+//            ['reviewable_id', $user_id],
+//        ]);
+//
+//        $completed_order = Order::whereDate(
+//            'completed_at', '>=', Carbon::now()->subWeek()
+//        );
+//
+//        $completed_order->where(function($query) use($user_id, $user) {
+//            $query
+//                ->where([
+//                    ['user_id', $user_id],
+//                    ['freelancer_id', $user->id],
+//                ])
+//                ->orWhere([
+//                    ['user_id', $user->id],
+//                    ['freelancer_id', $user_id],
+//                ]);
+//        });
+//
+//        return $completed_order->exists() && !$review->exists();
     }
 
     /**
