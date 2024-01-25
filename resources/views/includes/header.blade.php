@@ -90,8 +90,8 @@
                         </div>
                     </div>
                 @endauth
-                <button class="header_collapse">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <button style="position: relative" class="header_collapse">
+                    <svg style="position: relative" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                         <g stroke-width="6.5" stroke-linecap="round">
                             <path
                                 d="M72 82.286h28.75"
