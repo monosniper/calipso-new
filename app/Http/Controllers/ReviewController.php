@@ -57,7 +57,13 @@ class ReviewController extends Controller
             ])->exists()) {
                 abort(403, 'Вы уже написали отзыв');
             }
-            dd($request->reviewable_type == User::class);
+            dd(
+                '1: ' . $request->reviewable_type == 'App\Models\User',
+                '2: ' . $request->reviewable_type === 'App\Models\User',
+                '3: ' . $request->reviewable_type == 'App/Models/User',
+                '4: ' . $request->reviewable_type == User::class,
+                '5: ' . $request->reviewable_type === User::class
+            );
             if($request->reviewable_type == User::class) {
                 $user->cannot('create', [Review::class, $request->reviewable_id]) && abort(403);
             } else if($request->reviewable_type == Lot::class) {
