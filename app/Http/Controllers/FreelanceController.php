@@ -19,7 +19,30 @@ use ProtoneMedia\LaravelCrossEloquentSearch\Search;
 class FreelanceController extends Controller
 {
     public function index(Request $request) {
-        $categories = Category::forFreelance()->withCount('freelancers')->get();
+        $categories = Category::isRoot()->forFreelance()->withCount('freelancers')->get();
+
+        $breadcrumbs = [
+            [
+                'link' => route('home'),
+                'title' => 'Главная',
+            ],
+            [
+                'link' => route('orders.index'),
+                'title' => __('main.freelancers'),
+            ],
+        ];
+
+        if($request->has('category')) {
+            $category_ancestors = Category::forFreelance()->where('slug', $request->category)->first()->ancestorsAndSelf()->get()->reverse();
+            $categories = Category::forFreelance()->where('slug', $request->category)->first()->descendants()->whereDepth(1)->withCount('orders')->get();
+
+            foreach ($category_ancestors as $category) {
+                $breadcrumbs[] = [
+                    'link' => route('orders.index', $request->except(['category']) + ['category' => $category->slug]),
+                    'title' => $category->name,
+                ];
+            }
+        }
 
         $filters = EloquentBuilder::to(User::freelancers()->with('categories')->withCount([
             'reviews as positive_reviews_count' => function(Builder $query) {
@@ -36,6 +59,7 @@ class FreelanceController extends Controller
         return view('freelancers')->with([
             'freelancers' => $freelancers,
             'categories' => $categories,
+            'breadcrumbs' => $breadcrumbs,
         ]);
     }
 

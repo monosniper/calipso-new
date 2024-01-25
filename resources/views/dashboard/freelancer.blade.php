@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="profile__footer">
-            <a href="#" class="webz_btn"></a>
+            <a href="{{ route('forms.become') }}" class="webz_btn">{{ __('main.become_freelancer') }}</a>
         </div>
     </div>
 @endsection

@@ -116,18 +116,35 @@
                 <div class="grey_block grey_block_full grey_block_min_padding">
                     <div class="profile_menu">
                         @foreach ($menu_items as $item)
-                            <a href="{{route('dashboard.'.$item['route'])}}" class="profile_menu_item {{url()->current() === route('dashboard.'.$item['route']) ? 'active' : ''}}">
-                                <div class="profile_menu_item_icon">
-                                    @include('includes.svg', ['name' => $item['icon']])
-                                </div>
-                                <div class="profile_menu_item_title">
-                                    {{$item['name']}}
-                                    @isset($item['counter'])
-                                        @livewire($item['counter'])
-                                    @endif
-                                    <small>{{isset($item['count']) ? "(".$item['count'].")" : ''}}</small>
-                                </div>
-                            </a>
+                            @if($item['route'] === 'freelancer')
+                                @unless($user->isFreelancer)
+                                    <a href="{{route('dashboard.'.$item['route'])}}" class="profile_menu_item {{url()->current() === route('dashboard.'.$item['route']) ? 'active' : ''}}">
+                                        <div class="profile_menu_item_icon">
+                                            @include('includes.svg', ['name' => $item['icon']])
+                                        </div>
+                                        <div class="profile_menu_item_title">
+                                            {{$item['name']}}
+                                            @isset($item['counter'])
+                                                @livewire($item['counter'])
+                                            @endif
+                                            <small>{{isset($item['count']) ? "(".$item['count'].")" : ''}}</small>
+                                        </div>
+                                    </a>
+                                @endunless
+                            @else
+                                <a href="{{route('dashboard.'.$item['route'])}}" class="profile_menu_item {{url()->current() === route('dashboard.'.$item['route']) ? 'active' : ''}}">
+                                    <div class="profile_menu_item_icon">
+                                        @include('includes.svg', ['name' => $item['icon']])
+                                    </div>
+                                    <div class="profile_menu_item_title">
+                                        {{$item['name']}}
+                                        @isset($item['counter'])
+                                            @livewire($item['counter'])
+                                        @endif
+                                        <small>{{isset($item['count']) ? "(".$item['count'].")" : ''}}</small>
+                                    </div>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                     <hr class="separate">

@@ -33,7 +33,7 @@ class UpdateUserRequest extends FormRequest
 //                Rule::unique('users')->ignore(auth()->id())
             ],
             'password' => ['confirmed', 'max:32', 'min:8'],
-            'categories' => ['max:2'],
+            'categories' => ['max:10'],
             'email' => ['required', 'email',
 //                Rule::unique('users')->ignore(auth()->id())
             ],

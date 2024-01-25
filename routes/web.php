@@ -63,7 +63,7 @@ Route::name('forms.')->prefix('forms')->middleware('auth')->group(function () {
     Route::post('/feedback', [FormsController::class, 'feedback'])->name('feedback');
     Route::any('/filepond_avatar', [FormsController::class, 'filepond_avatar'])->name('filepond_avatar');
     Route::post('/report', [FormsController::class, 'report'])->name('report');
-    Route::post('/become-freelancer', [FormsController::class, 'becomeFreelancer'])->name('become');
+    Route::get('/become-freelancer', [FormsController::class, 'becomeFreelancer'])->name('become');
 });
 // ================ FORMS ==================
 

@@ -15,6 +15,7 @@ use App\Models\Feedback;
 use App\Models\Order;
 use App\Models\Portfolio;
 use App\Models\Report;
+use App\Models\Role;
 use App\Models\Safe;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -124,8 +125,9 @@ class FormsController extends Controller
 
     public function becomeFreelancer(Request $request): \Illuminate\Http\RedirectResponse
     {
-        
+        $role = Role::where('name', 'freelancer')->firstOrFail();
+        auth()->user()->roles()->save($role);
 
-        return back()->with('success', __('messages.success_freelancer'));
+        return redirect()->route('dashboard.cabinet')->with('success', __('messages.success_freelancer'));
     }
 }

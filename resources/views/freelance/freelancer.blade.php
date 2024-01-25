@@ -50,6 +50,14 @@
                     @endif
                     <div class="profile_detail">
                         <div class="profile_detail_icon">
+                            @include('includes.svg', ['name' => 'freelancer'])
+                        </div>
+                        <div class="profile_detail_name">
+                            {{__('main.freelancer')}}
+                        </div>
+                    </div>
+                    <div class="profile_detail">
+                        <div class="profile_detail_icon">
                             @include('includes.svg', ['name' => 'home'])
                         </div>
                         <div class="profile_detail_name">

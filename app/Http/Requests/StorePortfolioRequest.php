@@ -26,7 +26,7 @@ class StorePortfolioRequest extends FormRequest
         return [
             'title' => ['required', 'min:3', 'max:200'],
             'link' => ['url', 'nullable'],
-            'description' => ['required', 'min:10', 'max:500'],
+            'description' => ['required', 'min:10', 'max:2000'],
             'preview' => ['required', 'image'],
         ];
     }

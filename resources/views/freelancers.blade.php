@@ -32,18 +32,7 @@
     <div class="container main">
         <div class="row">
             <div class="col-lg-8 col-sm-12">
-                @include('includes.breadcrumbs', [
-                    'items' => [
-                        [
-                            'link' => route('home'),
-                            'title' => __('main.main'),
-                        ],
-                         [
-                            'link' => route('freelance.index'),
-                            'title' => __('main.freelancers'),
-                        ],
-                    ]
-                ])
+                @include('includes.breadcrumbs', ['items' => $breadcrumbs])
             </div>
             <div class="col-lg-4 col-sm-12">
                 @include('includes.search', ['page' => 'freelance.index'])
