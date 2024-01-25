@@ -1,5 +1,5 @@
 <div class="freelancer white_block">
-    <a href="{{route('chat.conversation', $conversation['id'])}}" class="freelancer-header">
+    <a style="text-decoration: none;" href="{{route('chat.conversation', $conversation['id'])}}" class="freelancer-header">
         <div class="freelancer-header-left">
             <div class="freelancer-avatar">
                 @online($conversation['companion']->id)
