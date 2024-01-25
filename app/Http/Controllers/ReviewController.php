@@ -71,7 +71,7 @@ class ReviewController extends Controller
             Lot::class => Lot::findOrFail($request->reviewable_id),
             User::class => User::findOrFail($request->reviewable_id),
         ];
-
+        dd(User::class, $request->reviewable_type);
         $reviewable = $reviewable_types[$request->reviewable_type];
 
         $review = new Review;
