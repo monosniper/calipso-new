@@ -51,6 +51,13 @@
         </div>
 
         <div class="white_block safe-body">
+            <a href="{{route('chat.add.conversation', $order->freelancer_id)}}" class="webz_btn">
+                <div class="profile_menu_item_icon">
+                    @include('includes.svg', ['name' => 'chat'])
+                </div>
+                <div class="profile_menu_item_title ">{{__('main.write')}}</div>
+            </a>
+
             <div class="safe-tab {{$order->status === App\Models\Safe::ACTIVE_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::ACTIVE_STATUS}}">
                 @if($order->safe->completedStatus(App\Models\Safe::ACTIVE_STATUS))
                     <h3 class="safe-body-title">{{__('order.chose_offer')}}:</h3>
