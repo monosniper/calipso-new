@@ -41,6 +41,7 @@
         "laravel/breeze": "^1.4",
         "laravel/sail": "^1.12",
         "mockery/mockery": "^1.4.4",
+        "ottaviano/faker-gravatar": "^0.2.0",
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {

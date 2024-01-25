@@ -13,14 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        \App\Models\User::factory(8)->create();
+//        \App\Models\User::factory(1)->create();
 //         \App\Models\Category::factory(100)->create();
 //         \App\Models\Order::factory(50)->create();
 //         \App\Models\Lot::factory(50)->create();
 
 
         $this->call([
-            CategorySeeder::class,
+//            CategorySeeder::class,
 //            RoleSeeder::class,
 //            FreelancersSeeder::class,
 //            FreelancersCategoriesSeeder::class,

@@ -16,8 +16,10 @@ class FreelancersSeeder extends Seeder
     public function run()
     {
         $role = Role::where('name', 'freelancer')->first();
-        foreach (User::all() as $user) {
+        foreach (User::latest()->limit(1)->get() as $user) {
             $user->roles()->save($role);
+
+//            $user->delete();
         }
     }
 }

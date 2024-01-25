@@ -88,21 +88,8 @@
                         @endforeach
                     </div>
                     <hr class="separate">
-                    <div class="ad_block">
-                        Ad
-                        <br>
-                        260x260
-                    </div>
-                    <div class="ad_block">
-                        <!-- Рекламный блок в боковой панели -->
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:260px;height:260px"
-                             data-ad-client="ca-pub-3129960251643439"
-                             data-ad-slot="4184839470"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                    </div>
+                    <a href="https://www.hogyx.io" class="ad_block" style="background-image: url({{ asset('assets/img/hogyx.png') }})"></a>
+                    <a href="https://www.crypto-miner.pro" class="ad_block" style="background-image: url({{ asset('assets/img/ad2.png') }})"></a>
                 </div>
             </div>
             <div class="profile_content">

@@ -28,9 +28,11 @@ class UserObserver
             $user->username = $username;
         }
 
-        if ($position = Location::get(request()->ip())) {
-            $user->location = $position->countryName . ' ' . $position->cityName;
-            $user->country_code = $position->countryCode;
+        if(!$user->location) {
+            if ($position = Location::get(request()->ip())) {
+                $user->location = $position->countryName . ' ' . $position->cityName;
+                $user->country_code = $position->countryCode;
+            }
         }
 
         $user->saveQuietly();

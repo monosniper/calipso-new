@@ -24,19 +24,21 @@ class CategorySeeder extends Seeder
         $last_parent_id = null;
 
         foreach ($categories as $category) {
-            $parent_id = null;
-
-            if(!$category->parent_id) {
-                $last_parent_id = $category->id;
-            } else {
-
-            }
+//            $parent_id = null;
+//
+//            if(!$category->parent_id) {
+//                $last_parent_id = $category->id;
+//            } else {
+//
+//            }
 
             Category::create([
                 'for' => Category::SHOP_NAME,
                 'name' => $category->name,
-                'parent_id' => $parent_id,
+                'parent_id' => $last_parent_id,
             ]);
+
+            if(!$category->parent_id) $last_parent_id = $category->id;
         }
     }
 }
