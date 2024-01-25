@@ -45,6 +45,10 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request): RedirectResponse
     {
+        // ONLY FOR NOW
+        $reviewable_type = User::class;
+
+
         !auth()->check() && abort(401, 'Для начала нужно войти в аккаунт');
 
         $user = auth()->user();
@@ -52,21 +56,15 @@ class ReviewController extends Controller
         if(!$user->isAdmin) {
             if(Review::where([
                 ['user_id', $user->id],
-                ['reviewable_type', $request->reviewable_type],
+                ['reviewable_type', $reviewable_type],
                 ['reviewable_id', $request->reviewable_id],
             ])->exists()) {
                 abort(403, 'Вы уже написали отзыв');
             }
-            dd(
-                '1: ' . $request->reviewable_type == 'App\Models\User',
-                '2: ' . $request->reviewable_type === 'App\Models\User',
-                '3: ' . $request->reviewable_type == 'App/Models/User',
-                '4: ' . $request->reviewable_type == User::class,
-                '5: ' . $request->reviewable_type === User::class
-            );
-            if($request->reviewable_type == User::class) {
+
+            if($reviewable_type == User::class) {
                 $user->cannot('create', [Review::class, $request->reviewable_id]) && abort(403);
-            } else if($request->reviewable_type == Lot::class) {
+            } else if($reviewable_type == Lot::class) {
                 if(!$user->hasPurchasedLot($request->reviewable_id)) {
                     abort(403, 'Отзыв можно написать только после покупки');
                 }
@@ -78,7 +76,7 @@ class ReviewController extends Controller
             User::class => User::findOrFail($request->reviewable_id),
         ];
 
-        $reviewable = $reviewable_types[$request->reviewable_type];
+        $reviewable = $reviewable_types[$reviewable_type];
 
         $review = new Review;
 
@@ -91,7 +89,7 @@ class ReviewController extends Controller
 
         $review->save();
 
-        if($request->reviewable_type === User::class) {
+        if($reviewable_type === User::class) {
             if($review->isNegative()) {
                 $reviewable->decreaseRating(config('calipso.freelance.rating.review'));
             } else {
