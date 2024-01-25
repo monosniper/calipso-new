@@ -30,7 +30,7 @@ class FeedBackApiController extends Controller
 
         $filters = EloquentBuilder::to(Feedback::orderBy($sort[0], $sort[1]), Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['theme', 'content', 'email']);
-        $feedBacks = $search_results->get($filter['q'] ?? '');
+        $feedBacks = $search_results->search($filter['q'] ?? '');
 
         return response()->json(FeedBackResource::collection($feedBacks->skip($range[0])->take($range[1] - $range[0]+ 1)))
             ->header("X-Total-Count", $feedBacks->count())

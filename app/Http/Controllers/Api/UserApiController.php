@@ -28,7 +28,7 @@ class UserApiController extends Controller
 
         $filters = EloquentBuilder::to(User::orderBy($sort[0], $sort[1]), Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['username', 'first_name', 'last_name', 'email']);
-        $users = $search_results->get($filter['q'] ?? '');
+        $users = $search_results->search($filter['q'] ?? '');
 
         return response()->json(UserResource::collection($users->skip($range[0])->take($range[1] - $range[0]+ 1)))
             ->header("X-Total-Count", $users->count())

@@ -65,7 +65,7 @@ class CategoryApiController extends Controller
         $sorted = !in_array($sortBy, $custom_sorts) ? $forCategories->orderBy($sortBy, $sortOrder) : $forCategories;
         $filters = EloquentBuilder::to($sorted, Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['slug', 'name']);
-        $categories = $search_results->get($filter['q'] ?? '');
+        $categories = $search_results->search($filter['q'] ?? '');
 
         if($range) {
             $response = CategoryResource::collection($categories->skip($range[0])->take($range[1] - $range[0] + 1));

@@ -54,7 +54,7 @@ class OfferApiController extends Controller
         $sorted = !array_key_exists($sortBy, $custom_sorts) ? $offers->orderBy($sortBy, $sortOrder) : $offers;
         $filters = EloquentBuilder::to($sorted, Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['content']);
-        $search_collection = $search_results->get($filter['q'] ?? '');
+        $search_collection = $search_results->search($filter['q'] ?? '');
         $result = !array_key_exists($sortBy, $custom_sorts) ? $search_collection : $custom_sorts[$sortBy]($search_collection);
 
         return response()->json(OfferResource::collection($result->skip($range[0])->take($range[1] - $range[0]+ 1)))

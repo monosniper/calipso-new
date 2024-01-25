@@ -29,7 +29,7 @@ class QuestionApiController extends Controller
 
         $filters = EloquentBuilder::to(Question::orderBy($sort[0], $sort[1]), Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['title', 'answer']);
-        $questions = $search_results->get($filter['q'] ?? '');
+        $questions = $search_results->search($filter['q'] ?? '');
 
         return response()->json(QuestionResource::collection($questions->skip($range[0])->take($range[1] - $range[0]+ 1)))
             ->header("X-Total-Count", $questions->count())

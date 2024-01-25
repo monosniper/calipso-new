@@ -50,7 +50,7 @@ class LotApiController extends Controller
         $sorted = !array_key_exists($sortBy, $custom_sorts) ? $lots->orderBy($sortBy, $sortOrder) : $lots;
         $filters = EloquentBuilder::to($sorted, Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['title', 'description']);
-        $search_collection = $search_results->get($filter['q'] ?? '');
+        $search_collection = $search_results->search($filter['q'] ?? '');
         $result = !array_key_exists($sortBy, $custom_sorts) ? $search_collection : $custom_sorts[$sortBy]($search_collection);
 
         return response()->json(LotResource::collection($result->skip($range[0])->take($range[1] - $range[0]+ 1)))

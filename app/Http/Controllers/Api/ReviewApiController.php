@@ -25,7 +25,7 @@ class ReviewApiController extends Controller
 
         $filters = EloquentBuilder::to(Review::orderBy($sort[0], $sort[1]), Arr::except($filter, ['q']));
         $search_results = Search::add($filters, ['title', 'content']);
-        $reviews = $search_results->get($filter['q'] ?? '');
+        $reviews = $search_results->search($filter['q'] ?? '');
 
         return response()->json(ReviewResource::collection($reviews->skip($range[0])->take($range[1] - $range[0]+ 1)))
             ->header("X-Total-Count", $reviews->count())
