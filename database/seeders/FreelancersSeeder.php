@@ -18,7 +18,7 @@ class FreelancersSeeder extends Seeder
     {
         $role = Role::where('name', 'freelancer')->first();
         $avatars = Storage::files('avatars');
-        foreach (User::latest()->limit(1)->get() as $user) {
+        foreach (User::latest()->limit(300)->get() as $user) {
             $user->roles()->save($role);
 
             $user->addMediaFromDisk($avatars[array_rand($avatars)], 'local')->toMediaCollection('avatar');
