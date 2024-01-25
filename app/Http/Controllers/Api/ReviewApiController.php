@@ -43,12 +43,13 @@ class ReviewApiController extends Controller
      */
     public function store(Request $request)
     {
-        $reviewable_types = [
-            'lot' => Lot::findOrFail($request->reviewable_id),
-            'user' => User::findOrFail($request->reviewable_id),
-        ];
+//        $reviewable_types = [
+//            'lot' => Lot::findOrFail($request->reviewable_id),
+//            'user' => User::findOrFail($request->reviewable_id),
+//        ];
 
-        $reviewable = $reviewable_types[$request->reviewable_type];
+//        $reviewable = $reviewable_types[$request->reviewable_type];
+        $reviewable = User::findOrFail($request->reviewable_id);
 
         $review = new Review;
 
