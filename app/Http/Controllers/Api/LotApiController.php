@@ -66,7 +66,7 @@ class LotApiController extends Controller
      */
     public function store(StoreLotRequest $request)
     {
-        $lot = Lot::create($request->validated() + ['properties' => json_encode($request->properties)]);
+        $lot = Lot::create($request->validated() + ['properties' => json_encode($request->properties), 'user_id' => auth()->id()]);
 
         if($request->has('tag_names')) {
             $lot->syncTags($request->tag_names, Lot::class);
