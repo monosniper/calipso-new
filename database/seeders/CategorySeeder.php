@@ -32,13 +32,13 @@ class CategorySeeder extends Seeder
 //
 //            }
 
-            Category::create([
+            $cat = Category::create([
                 'for' => Category::SHOP_NAME,
                 'name' => $category->name,
                 'parent_id' => $last_parent_id,
             ]);
 
-            if(!$category->parent_id) $last_parent_id = $category->id;
+            if(!$category->parent_id) $last_parent_id = $cat->id;
         }
     }
 }

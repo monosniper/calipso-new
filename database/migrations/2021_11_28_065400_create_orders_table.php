@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Safe;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->text('description');
             $table->integer('price');
             $table->integer('views')->default(0);
-            $table->enum('status', Order::STATUSES)->default('active');
+            $table->enum('status', Safe::STATUSES)->default('active');
             $table->boolean('isUrgent')->default(false);
             $table->boolean('isSafe')->default(false);
             $table->integer('days')->default(3);

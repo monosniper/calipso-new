@@ -180,7 +180,7 @@ class DashboardController extends Controller
             $query
                 ->where('user_id', $user->id)
                 ->orWhere('freelancer_id', $user->id);
-        })->inWork()->latest()->paginate(12);
+        })->InWorkOrAgreement()->latest()->paginate(12);
 
         return view('dashboard.work', [
             'user' => $user,

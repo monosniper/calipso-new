@@ -20,6 +20,7 @@ class Order extends Model implements HasMedia
     const WORK_STATUS = 'in_work';
     const REVIEWS_STATUS = 'reviews';
     const COMPLETED_STATUS = 'completed';
+    const AGREEMENT_STATUS = 'agreement';
 
     const STATUSES = [
         self::ACTIVE_STATUS,
@@ -83,6 +84,10 @@ class Order extends Model implements HasMedia
      */
     public function scopeInWork($query) {
         return $query->where('status', self::WORK_STATUS);
+    }
+
+    public function scopeInWorkOrAgreement($query) {
+        return $query->whereIn('status', [self::AGREEMENT_STATUS, self::WORK_STATUS]);
     }
 
     /**

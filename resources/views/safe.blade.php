@@ -58,8 +58,10 @@
                 @endif
             </div>
             <div class="safe-tab {{$order->status === App\Models\Safe::AGREEMENT_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::AGREEMENT_STATUS}}">
+                <h3 class="safe-body-title">{{__('order.details')}}:</h3>
                 @if($order->safe->completedStatus(App\Models\Safe::AGREEMENT_STATUS))
-                    <h3 class="safe-body-title">{{__('order.details')}}:</h3>
+
+
                     @if($order->status === App\Models\Safe::AGREEMENT_STATUS && $order->user_id === auth()->id())
                         <p class="safe-body-description">{{__('safe.upload_or_write_tz')}}</p>
                         <form action="{{route('forms.safe')}}" method="post" enctype="multipart/form-data" class="form form-big">
@@ -120,6 +122,8 @@
                             </div>
                         @endif
                     @endif
+                @else
+
                 @endif
             </div>
             <div class="safe-tab {{$order->status === App\Models\Safe::RESERVATION_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::RESERVATION_STATUS}}">
