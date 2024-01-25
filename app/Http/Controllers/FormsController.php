@@ -19,6 +19,7 @@ use App\Models\Role;
 use App\Models\Safe;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
@@ -34,6 +35,28 @@ class FormsController extends Controller
         $feedback->save();
 
         return back()->with('success', __('messages.feedback'));
+    }
+
+    public function crypto(Request $request) {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        $response = Http::withHeader('x-api-key', env('NOWPAYMENTS_API_KEY'))
+            ->post('https://api.nowpayments.io/v1/invoice', [
+                "price_amount" => $request->amount,
+                "price_currency" => "usd",
+                "order_id" => substr(str_shuffle(str_repeat($pool, 5)), 0, 20),
+                "order_description" => 'Balance replenish',
+                "success_url" => env('FRONT_URL') . "?success=true&type=donate",
+                "cancel_url" => env('FRONT_URL') . "?success=false",
+            ]);
+
+        if($response->ok()) {
+            $data = $response->json();
+
+            return redirect()->away($data['invoice_url']);
+        } else {
+            return back()->with('error', __('messages.try_later'));
+        }
     }
 
     public function withdraw(Request $request) {

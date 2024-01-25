@@ -65,6 +65,7 @@ Route::name('forms.')->prefix('forms')->middleware('auth')->group(function () {
     Route::post('/report', [FormsController::class, 'report'])->name('report');
     Route::get('/become-freelancer', [FormsController::class, 'becomeFreelancer'])->name('become');
     Route::post('/withdraw', [FormsController::class, 'withdraw'])->name('withdraw');
+    Route::post('/crypto', [FormsController::class, 'crypto'])->name('crypto');
 });
 // ================ FORMS ==================
 
