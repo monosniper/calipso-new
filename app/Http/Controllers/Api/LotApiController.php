@@ -75,7 +75,7 @@ class LotApiController extends Controller
         if ($request->has('images')) {
             foreach ($request->images as $file) {
                 if(isset($file['src'])) {
-                    $lot->addMediaFromBase64($file['src'])->usingFileName($file['title'])->toMediaCollection('images');
+                    $lot->addMediaFromBase64($file['src'])->toMediaCollection('images');
                 }
             }
         }
@@ -83,7 +83,7 @@ class LotApiController extends Controller
         if ($request->has('archive')) {
             foreach ($request->archive as $file) {
                 if(isset($file['src'])) {
-                    $lot->addMediaFromBase64($file['src'])->usingFileName($file['title'])->toMediaCollection('archive');
+                    $lot->addMediaFromBase64($file['src'])->toMediaCollection('archive');
                 }
             }
         }
