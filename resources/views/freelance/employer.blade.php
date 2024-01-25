@@ -80,11 +80,12 @@
         <div class="section_header">
             <div class="profile_title profile_title_header">
                 <span>{{__('main.reviews')}} <small>({{$user->reviews_count}})</small></span>
-                @auth
-                    @if(auth()->user()->can('create', [App\Models\Review::class, $user->id]))
-                        <button class="webz_btn white bordered open_modal" modal-wrapper="#add-review">{{__('main.make_review')}}</button>
-                    @endif
-                @endauth
+{{--                @auth--}}
+{{--                    @if(auth()->user()->can('create', [App\Models\Review::class, $user->id]))--}}
+{{--                        <button class="webz_btn white bordered open_modal" modal-wrapper="#add-review">{{__('main.make_review')}}</button>--}}
+{{--                    @endif--}}
+{{--                @endauth --}}
+                <button class="webz_btn white bordered open_modal" modal-wrapper="#add-review">{{__('main.make_review')}}</button>
             </div>
         </div>
 
