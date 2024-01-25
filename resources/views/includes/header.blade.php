@@ -3,10 +3,6 @@
 @endphp
 
 <header class="header {{ isset($dark) ? $dark ? 'header_dark' : '' : 'scroll' }}">
-    @unless(auth()->check())
-        @include('includes.modals.sign')
-    @endunless
-
     <div class="lg-only">
         <div class="container header_wrapper">
             <div class="header_left">
@@ -187,6 +183,10 @@
         </div>
     </div>
 </header>
+
+@unless(auth()->check())
+    @include('includes.modals.sign')
+@endunless
 
 @isset($normalize)
     @if ($normalize)
