@@ -5,9 +5,9 @@ export default class Modal {
     constructor(options) {
         this.default_options = {
             modal_selector: '.modal',
-            timeout: 1000,
-            animation: 'bounceInUp',
-            dismiss_animation: 'zoomOutUp',
+            timeout: 500,
+            animation: 'fadeInUp',
+            dismiss_animation: 'fadeOutUp',
             form: true,
 
             resolve_btn_class: 'resolve_btn',
