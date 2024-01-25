@@ -148,11 +148,7 @@
                         @endforeach
                     </div>
                     <hr class="separate">
-                    <div class="ad_block">
-                        Ad
-                        <br>
-                        260x260
-                    </div>
+                    <div class="ad_block" style="background-image: url({{ asset('img/hogyx.png') }})"></div>
                     <div class="ad_block">
                         <!-- Рекламный блок в боковой панели -->
                         <ins class="adsbygoogle"
