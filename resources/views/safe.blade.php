@@ -107,7 +107,7 @@
                         @endforelse
                     </div>
 
-                    <p>{{$order->safe->tz}}</p>
+                    <p>{!! $order->safe->tz !!}</p>
 
                     @if($order->user_id !== auth()->id())
                         @if($order->safe->tz === '' || !$order->safe->media->count())
@@ -123,7 +123,7 @@
             <div class="safe-tab {{$order->status === App\Models\Safe::RESERVATION_STATUS ? 'active' : ''}}" data-tab-name="{{App\Models\Safe::RESERVATION_STATUS}}">
                 <h3 class="safe-body-title">{{__('order.status.'.App\Models\Safe::RESERVATION_STATUS)}}:</h3>
                 <p class="safe-body-description">{{__('safe.reservation' . ($order->user_id !== auth()->id() ? '_freelancer' : ''))}}</p>
-                @unless($order->safe->completedStatus(App\Models\Safe::RESERVATION_STATUS))
+                @unless($order->safe->completedStatus(App\Models\Safe::RESERVATION_STATUS) && $order->user_id !== auth()->id())
                     <a href="{{route('freelance.orders.reserve', $order->id)}}" class="webz_btn">{{__('safe.reserve')}}</a>
                 @endunless
             </div>
