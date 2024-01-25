@@ -16,6 +16,7 @@ return [
     'all_freelancers' => 'All freelancers',
     'all_lots' => 'All lots',
     'premium_lots' => 'Premium lots',
+    'shop_text' => 'Welcome to our "Shop" section - a virtual market where customers and experienced freelancers meet. Here you will find a variety of ready-made works created by talented specialists in the field of design, programming, copywriting and many other fields. Our store provides a convenient platform to browse and select works that suit your requirements. Customers can easily view freelancers’ portfolios, evaluate the quality and choose the appropriate solution for their project. Freelancers get the opportunity to present their best work to a wide audience of customers. We strive to create a space where quality and professionalism meet customer needs. Don’t waste time – go to the “Shop” section and start your path to successful cooperation in the world of freelancing!',
     'mobile_app' => 'Mobile app',
     'our_benefits' => 'Our advantages',
     'benefits' => [

@@ -301,14 +301,7 @@
             </div>
             <div class="section_text">
                 <h2 class="section_title webz_underline_half">{{__('home.about_shop')}}</h2>
-                <p class="section_par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore error
-                    voluptatum, veniam enim magnam aut impedit. Impedit, corrupti. Rerum impedit pariatur saepe
-                    asperiores possimus rem hic, nulla ullam accusamus ratione.</p>
-                <p class="section_par">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum provident repellat
-                    unde dignissimos ipsam explicabo voluptates consequatur illum fuga, rem est molestias, odio facilis
-                    esse laboriosam ad! Enim, velit sit.Autem fugit modi aliquid perspiciatis debitis sit perferendis
-                    esse! Tempora nisi ipsam magni soluta, possimus quibusdam reprehenderit ad alias quis facilis
-                    doloribus labore saepe tenetur amet laboriosam, culpa voluptatibus ipsum?</p>
+                <p class="section_par">{{ __('home.shop_text') }}</p>
                 <div class="section_details">
                     <a href="{{route('about', '#shop')}}" class="section_details_link">
                         {{__('main.details')}}
