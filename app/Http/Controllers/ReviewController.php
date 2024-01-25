@@ -61,7 +61,7 @@ class ReviewController extends Controller
             }
 
             if($request->reviewable_type === 'user') {
-                $user->cannot('create', [Review::class, $reviewable_type]) && abort(403);
+//                $user->cannot('create', [Review::class, $reviewable_type]) && abort(403);
             } else if($request->reviewable_type === 'lot') {
                 if(!$user->hasPurchasedLot($reviewable_type)) {
                     abort(403, 'Отзыв можно написать только после покупки');
