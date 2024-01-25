@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class FreelancersSeeder extends Seeder
 {
@@ -16,8 +17,11 @@ class FreelancersSeeder extends Seeder
     public function run()
     {
         $role = Role::where('name', 'freelancer')->first();
+        $avatars = Storage::files('avatars');
         foreach (User::latest()->limit(1)->get() as $user) {
             $user->roles()->save($role);
+
+            $user->addMediaFromDisk($avatars[array_rand($avatars)], 'local')->toMediaCollection('avatar');
 
 //            $user->delete();
         }
