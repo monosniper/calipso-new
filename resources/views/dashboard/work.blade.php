@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="grey_block">
-        <div class="profile_title">{{__('main.work')}} <small>({{$user->orders_work_count}})</small></div>
+        <div class="profile_title">{{__('main.work')}} <small>({{$user->orders_work_count()}})</small></div>
         <div class="orders">
             @forelse($orders as $order)
                 @include('includes.order', ['order' => $order, 'for' => 'my_orders'])
