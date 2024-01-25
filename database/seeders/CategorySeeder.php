@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -13,6 +14,29 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = Category::forShop()->get();
+
+        foreach ($categories as $category) {
+            $category->delete();
+        }
+
+        $categories = Category::forFreelance()->get();
+        $last_parent_id = null;
+
+        foreach ($categories as $category) {
+            $parent_id = null;
+
+            if(!$category->parent_id) {
+                $last_parent_id = $category->id;
+            } else {
+
+            }
+
+            Category::create([
+                'for' => Category::SHOP_NAME,
+                'name' => $category->name,
+                'parent_id' => $parent_id,
+            ]);
+        }
     }
 }

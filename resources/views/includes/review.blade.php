@@ -25,7 +25,7 @@
         </div>
         <div class="review-body">
             <div class="review-title">{{$review->title}}</div>
-            <div class="review-content">{{$review->content}}</div>
+            <div class="review-content">{!! $review->content !!}</div>
         </div>
 {{--        @auth--}}
 {{--            <div class="review-footer">--}}
