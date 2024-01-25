@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('includes.modals.review', ['reviewable_type' => \App\Models\User::class, 'reviewable_id' => $user->id])
+    @include('includes.modals.review', ['reviewable_type' => 'user', 'reviewable_id' => $user->id])
 
     <div class="grey_block">
         <div class="profile_title profile_title_header">
