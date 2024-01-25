@@ -27,7 +27,7 @@ class StorePortfolioRequest extends FormRequest
             'title' => ['required', 'min:3', 'max:200'],
             'link' => ['url', 'nullable'],
             'description' => ['required', 'min:10', 'max:2000'],
-            'preview' => ['required', 'image'],
+//            'preview' => ['required', 'image'],
         ];
     }
 
@@ -51,7 +51,7 @@ class StorePortfolioRequest extends FormRequest
             'description.min' => 'Поле описание должно содержать не менее 10 символов',
             'description.max' => 'Поле описание должно содержать не более 500 символов',
 
-            'preview.image' => 'Поле картинка должно быть с расширением jpg, jpeg, png, bmp, gif, svg, или webp',
+//            'preview.image' => 'Поле картинка должно быть с расширением jpg, jpeg, png, bmp, gif, svg, или webp',
         ];
     }
 }
