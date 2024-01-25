@@ -89,7 +89,6 @@
             border: 0.5px solid #C4C4C4;
             border-radius: 5px;
             padding: 15px 14px;
-            color: $light;
             z-index: 10;
             outline: none;
             font-family: 'Montserrat', sans-serif;
@@ -97,6 +96,10 @@
 
         .modal_field + .modal_field {
             margin-top: 25px;
+        }
+
+        .modal_field:last-child {
+            margin-bottom: 25px;
         }
 
         hr {
