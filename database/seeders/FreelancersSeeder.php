@@ -20,7 +20,7 @@ class FreelancersSeeder extends Seeder
 //        $role = Role::where('name', 'freelancer')->first();
         $avatars = Storage::files('avatars');
 //        foreach (User::latest()->get() as $user) {
-        foreach (User::latest()->limit(1000)->get() as $user) {
+        foreach (User::latest()->skip(1000)->limit(500)->get() as $user) {
 //            $user->roles()->save($role);
 //            $user->created_at = Carbon::today()->subDays(rand(0, 365 * 3));
 //            $user->save();
