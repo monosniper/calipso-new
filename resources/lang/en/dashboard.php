@@ -11,6 +11,7 @@ return [
     'no_reviews_for' => 'User :name has no reviews.',
     'no_lots_for' => 'User :name has no lots.',
     'no_orders_for' => 'User :name has no orders.',
+    'become_text' => "Calipso is the best freelance exchange, thousands of users have already chosen us and this is why they love us:\n\n1. Safe financial transactions.\n2. Flexible working conditions.\n3. Variety of tasks and projects. \n4.Honest reviews and ratings\n\nJoin our community of freelancers and start your successful journey in the world of online work!",
     'no_wishlist_lots' => 'User :name has no wish lots.',
     'no_basket_lots' => 'You haven\'t added lots to the cart yet.',
     'to_withdraw' => 'Withdraw',
