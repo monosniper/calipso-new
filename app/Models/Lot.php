@@ -326,7 +326,7 @@ class Lot extends Model implements HasMedia, Buyable, ProductLimitedInterface {
             ->get()
             ->last();
 
-        return $prev_lot ? $prev_lot->getPosition($ordered_lots) + 1 : $premium_lots->count();
+        return $prev_lot ? $prev_lot->getPosition($ordered_lots) + 1 : $premium_lots->count() + 1;
     }
 
     public function getBuyableIdentifier($options = null)
