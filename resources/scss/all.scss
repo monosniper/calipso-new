@@ -1690,14 +1690,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .slider img {
     height: 18.75em;
-    opacity: 0;
+    //opacity: 0;
     transition: .25s;
     width: 25em;
     vertical-align: top;
-    visibility: hidden;
+    //visibility: hidden;
 }
 .slider li input:checked ~ img {
-    opacity: 1;
-    visibility: visible;
+    //opacity: 1;
+    //visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     z-index: 10;
 }
