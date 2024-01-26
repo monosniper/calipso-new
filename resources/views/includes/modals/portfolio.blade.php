@@ -11,7 +11,7 @@
             <ul class="slider ">
                 @foreach($portfolio->getMedia('preview') as $image)
                     <li>
-                        <input type="radio" id="slide{{ $loop->index }}" name="slide" checked="checked">
+                        <input type="radio" id="slide{{ $loop->index }}" name="slide" @checked(!$loop->index)>
                         <label for="slide{{ $loop->index }}"></label>
                         <img src="{{ $image->getFullUrl() }}" alt="{{ $portfolio->title }}">
                     </li>
