@@ -143,6 +143,7 @@ Route::name('cart.')
     ->middleware('auth')
     ->group(function () {
         Route::get('/pay', [CartController::class, 'pay'])->name('pay');
+        Route::get('/clear', [CartController::class, 'clear'])->name('clear');
     });
 
 // ================ OTHER ==================

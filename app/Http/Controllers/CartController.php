@@ -39,4 +39,10 @@ class CartController extends Controller
 
         return back()->with('success', __('main.success_pay_cart'));
     }
+
+    public function clear() {
+        Cart::instance('basket')->destroy();
+        Cart::instance('wishlist')->destroy();
+        Cart::store(auth()->id());
+    }
 }
