@@ -44,6 +44,7 @@ Route::group(['as' => 'api.'], function() {
             'orders' => OrderApiController::class,
             'reviews' => ReviewApiController::class,
             'users' => UserApiController::class,
+            'prices' => PriceApiController::class,
             'tags' => TagApiController::class,
             'offers' => OfferApiController::class,
             'feedBacks' => FeedBackApiController::class,
