@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
             'first_name' => ['max:255'],
             'last_name' => ['max:255'],
             'location' => ['max:255'],
-            'rating' => ['number'],
+            'rating' => ['numeric'],
             'roles.*' => ['exists:roles,name'],
             'username' => ['required', 'max:255',
 //                Rule::unique('users')->ignore(auth()->id())
