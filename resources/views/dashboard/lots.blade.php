@@ -6,7 +6,12 @@
 
 @section('content')
     <div class="grey_block">
-        <div class="profile_title">{{__('main.my_lots')}} <small>({{$user->lots_count}})</small></div>
+        <div class="profile_title profile_title_header">
+            <span>{{__('main.my_lots')}} <small>({{$user->lots_count}})</small></span>
+            <div>
+                <a href="{{route('lots.create')}}" class="webz_btn white bordered">{{__('main.make_lot')}}</a>
+            </div>
+        </div>
 
         <div class="lots">
             @forelse($lots as $lot)
