@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/simple-grid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome-all.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/pages/profile.css') }}"/>
+
 
     @translations
 @yield('css')
@@ -116,5 +116,7 @@
     @yield('js')
         @include('includes.fondy')
         @include('includes.noty-messages')
+
+        <link rel="stylesheet" href="{{ asset('assets/css/pages/profile.css') }}"/>
 </body>
 </html>
