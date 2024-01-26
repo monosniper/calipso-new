@@ -46,6 +46,7 @@ class User extends Authenticatable implements HasMedia, Wallet, WalletFloat, Cus
         'password',
         'location',
         'resume',
+        'rating',
     ];
 
     /**
