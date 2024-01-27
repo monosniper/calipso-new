@@ -164,7 +164,7 @@
                                 {{$lot_position_premium}} <span class="stats-block-body-plus"><i class="fas fa-angle-up"></i> {{$lot_position - $lot_position_premium}}</span>
                             </div>
                             <div class="stats-block-footer">
-                                <a href="{{ route('dashboard.make-premium', $lot->id) }}" class="webz_btn">{{__('stats.make_premium')}} $6</a>
+                                <a href="{{ route('dashboard.make-premium', $lot->slug) }}" class="webz_btn">{{__('stats.make_premium')}} $6</a>
                             </div>
                         </div>
                         <div class="stats-block-right">
