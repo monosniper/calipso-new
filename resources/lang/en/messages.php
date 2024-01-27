@@ -5,6 +5,7 @@ return [
     'success_freelancer' => 'You became a freelancer',
     'feedback' => 'Thanks! Your opinion is very important to us, we will reply to you within 3 working days.',
     'withdraw' => 'Your application is accepted',
+    'success_pay_premium' => 'Lot is now premium',
     'lots' => [
         'updated' => 'The lot has been updated and sent for re-checking.',
     ],

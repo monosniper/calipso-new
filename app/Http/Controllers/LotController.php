@@ -278,4 +278,17 @@ class LotController extends Controller
             'rating' => number_format((float) $lot->avgRating, 2, '.', ''),
         ]);
     }
+
+    public function makePremium(Lot $lot) {
+        $user = auth()->user();
+
+        try {
+            $user->withdraw(6);
+            $lot->update(['isPremium' => true]);
+        } catch (\Bavix\Wallet\Exceptions\BalanceIsEmpty|\Bavix\Wallet\Exceptions\InsufficientFunds $err) {
+            return back()->with('error', __('errors.not_enough_money'));
+        }
+
+        return back()->with('success', __('messages.success_pay_premium'));
+    }
 }

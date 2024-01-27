@@ -89,6 +89,8 @@ Route::name('dashboard.')
         Route::get('/pay-history', [DashboardController::class, 'payHistory'])->name('pay-history');
         Route::get('/withdraw', [DashboardController::class, 'withdraw'])->name('withdraw');
         Route::get('/be-freelancer', [DashboardController::class, 'freelancer'])->name('freelancer');
+
+        Route::get('/make-premium/{lot}', [LotController::class, 'makePremium'])->name('make-premium');
 });
 // ================ DASHBOARD ==================
 
