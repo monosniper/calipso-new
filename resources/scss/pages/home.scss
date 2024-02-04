@@ -695,3 +695,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 280px;
     margin-top: -250px;
 }
+
+.chat-btn {
+    background: none !important;
+    border: 1.5px solid #EB00E1 !important;
+    box-shadow: none !important;
+    color: #EB00E1 !important;
+    margin-top: 10px;
+    display: flex;
+}

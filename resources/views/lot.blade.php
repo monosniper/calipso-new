@@ -202,10 +202,7 @@
                                             <button onclick="Livewire.emit('add', 'basket', '{{$lot->slug}}')" class="webz_btn">{{__('main.add_to_basket')}}</button>
                                         @endif
                                         @if($lot->user_id !== auth()->id())
-                                            <a href="{{route('chat.add.conversation', $lot->user_id)}}" class="chat-btn">
-                                                <div class="profile_menu_item_icon">
-                                                    @include('includes.svg', ['name' => 'chat'])
-                                                </div>
+                                            <a href="{{route('chat.add.conversation', $lot->user_id)}}" class="webz_btn chat-btn">
                                                 <div class="profile_menu_item_title ">{{__('main.write_seller')}}</div>
                                             </a>
                                         @endif
