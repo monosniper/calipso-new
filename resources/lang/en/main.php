@@ -16,6 +16,7 @@ return [
     'lots' => 'Lots',
     'my_orders' => 'My orders',
     'write_message' => 'Write a message',
+    'write_seller' => 'Write to the seller',
     'orders' => 'Orders',
     'pay_history' => 'Pay history',
     'delete' => 'Delete',

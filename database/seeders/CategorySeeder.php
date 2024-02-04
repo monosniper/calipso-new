@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Lot;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -14,16 +15,16 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = Category::forShop()->get();
+//        $categories = Category::forShop()->get();
+//
+//        foreach ($categories as $category) {
+//            $category->delete();
+//        }
+//
+//        $categories = Category::forFreelance()->get();
+//        $last_parent_id = null;
 
-        foreach ($categories as $category) {
-            $category->delete();
-        }
-
-        $categories = Category::forFreelance()->get();
-        $last_parent_id = null;
-
-        foreach ($categories as $category) {
+//        foreach ($categories as $category) {
 //            $parent_id = null;
 //
 //            if(!$category->parent_id) {
@@ -32,13 +33,21 @@ class CategorySeeder extends Seeder
 //
 //            }
 
-            $cat = Category::create([
-                'for' => Category::SHOP_NAME,
-                'name' => $category->name,
-                'parent_id' => $last_parent_id,
-            ]);
+//            $cat = Category::create([
+//                'for' => Category::SHOP_NAME,
+//                'name' => $category->name,
+//                'parent_id' => $last_parent_id,
+//            ]);
+//
+//            if(!$category->parent_id) $last_parent_id = $cat->id;
+//        }
 
-            if(!$category->parent_id) $last_parent_id = $cat->id;
+        $lots = Lot::all();
+
+        foreach ($lots as $lot) {
+            if(!$lot->category) {
+                $lot->delete();
+            }
         }
     }
 }

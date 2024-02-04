@@ -195,11 +195,21 @@
                             <div class="single-lot-basket">
                                 <span onclick="Livewire.emit('add', 'wishlist', '{{$lot->slug}}')" class="material-icons-outlined">favorite_border</span>
                                 @auth
-                                    @if(auth()->user()->hasPurchasedLot($lot->id) || auth()->id() === $lot->user_id)
-                                        <a href="{{route('lots.get', $lot->slug)}}" class="webz_btn">{{__('main.get')}}</a>
-                                    @else
-                                        <button onclick="Livewire.emit('add', 'basket', '{{$lot->slug}}')" class="webz_btn">{{__('main.add_to_basket')}}</button>
-                                    @endif
+                                    <div class="lot-btns">
+                                        @if(auth()->user()->hasPurchasedLot($lot->id) || auth()->id() === $lot->user_id)
+                                            <a href="{{route('lots.get', $lot->slug)}}" class="webz_btn">{{__('main.get')}}</a>
+                                        @else
+                                            <button onclick="Livewire.emit('add', 'basket', '{{$lot->slug}}')" class="webz_btn">{{__('main.add_to_basket')}}</button>
+                                        @endif
+                                        @if($lot->user_id !== auth()->id())
+                                            <a href="{{route('chat.add.conversation', $lot->user_id)}}" class="chat-btn">
+                                                <div class="profile_menu_item_icon">
+                                                    @include('includes.svg', ['name' => 'chat'])
+                                                </div>
+                                                <div class="profile_menu_item_title ">{{__('main.write_seller')}}</div>
+                                            </a>
+                                        @endif
+                                    </div>
                                 @else
                                     <button onclick="Livewire.emit('add', 'basket', '{{$lot->slug}}')" class="webz_btn">{{__('main.add_to_basket')}}</button>
                                 @endauth

@@ -23,7 +23,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::forShop()->get();
-        $tags = Tag::getWithType(Lot::class);
+        $tags = Tag::getWithType(Order::class);
         $premium_lots = Lot::premium()->active()->latest()->limit(3)->get();
         $top_freelancers = User::freelancers()->orderBy('rating', 'desc')->limit(4)->get();
 
