@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
-            CategorySeeder::class,
+//            CategorySeeder::class,
 //            RoleSeeder::class,
-//            FreelancersSeeder::class,
+            FreelancersSeeder::class,
 //            FreelancersCategoriesSeeder::class,
 //            LotReviewsSeeder::class,
 //            UserCountryCodesSeeder::class,
