@@ -106,7 +106,7 @@ class OrderApiController extends Controller
     {
         if(Order::where('title', $request->title)->first()) abort(400);
 
-        $order = Order::create([
+        $order = Order::create(
             $request->only([
                 'title',
                 'description',
@@ -116,7 +116,7 @@ class OrderApiController extends Controller
                 'category_id' => Category::forFreelance()->get()->random()->id,
                 'user_id' => User::all()->random()->id,
                 'days' => rand(1, 30),
-            ]]);
+            ]);
 
         $order->syncTags($request->tags, Order::class);
 
