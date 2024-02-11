@@ -38,6 +38,7 @@ class Order extends Model implements HasMedia
         'isUrgent',
         'user_id',
         'category_id',
+        'created_at',
     ];
 
     protected $casts = [

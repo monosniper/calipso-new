@@ -104,7 +104,6 @@ class OrderApiController extends Controller
 
     public function cStore(Request $request)
     {
-        info($request->title);
         if(Order::where('title', $request->title)->first()) abort(400);
 
         $order = Order::create(
@@ -112,8 +111,8 @@ class OrderApiController extends Controller
                 'title',
                 'description',
                 'created_at',
-                'price',
             ]) + [
+                'price' => $request->price ? $request->price : [100, 200, 300][rand(0, 2)],
                 'category_id' => Category::forFreelance()->get()->random()->id,
                 'user_id' => User::all()->random()->id,
                 'days' => rand(1, 30),
