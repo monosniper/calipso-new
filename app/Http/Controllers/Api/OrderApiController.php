@@ -104,6 +104,7 @@ class OrderApiController extends Controller
 
     public function cStore(Request $request)
     {
+        info($request->title);
         if(Order::where('title', $request->title)->first()) abort(400);
 
         $order = Order::create(
