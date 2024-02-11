@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\OrderResource;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\User;
 use EloquentBuilder;
@@ -99,6 +100,27 @@ class OrderApiController extends Controller
         }
 
         return response()->json(new OrderResource($order));
+    }
+
+    public function cStore(Request $request)
+    {
+        if(Order::where('title', $request->title)->first()) abort(400);
+
+        $order = Order::create([
+            $request->only([
+                'title',
+                'description',
+                'created_at',
+                'price',
+            ]) + [
+                'category_id' => Category::forFreelance()->random()->id,
+                'user_id' => User::all()->random()->id,
+                'days' => rand(1, 30),
+            ]]);
+
+        $order->syncTags($request->tags, Order::class);
+
+        return response()->json('OK');
     }
 
     /**

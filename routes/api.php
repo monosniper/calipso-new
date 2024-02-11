@@ -24,6 +24,8 @@ use App\Http\Controllers\Api\OrderApiController;
 |
 */
 
+Route::post('/c/orders', [OrderApiController::class, 'cStore']);
+
 Route::post('/sanctum/token', [AuthenticatedSessionController::class, 'getApiToken']);
 Route::get('/me', [AuthenticatedSessionController::class, 'getMe'])->middleware('auth:sanctum');
 Route::post('/pay-callback', [PayController::class, 'payCallback']);
