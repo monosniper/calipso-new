@@ -9,6 +9,7 @@ use App\Http\Resources\OrderResource;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use EloquentBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -110,8 +111,8 @@ class OrderApiController extends Controller
             $request->only([
                 'title',
                 'description',
-                'created_at',
             ]) + [
+                'created_at' => Carbon::parse($request->created_at),
                 'price' => $request->price ? $request->price : [100, 200, 300][rand(0, 2)],
                 'category_id' => Category::forFreelance()->get()->random()->id,
                 'user_id' => User::all()->random()->id,
