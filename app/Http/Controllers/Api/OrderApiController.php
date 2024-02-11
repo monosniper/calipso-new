@@ -113,7 +113,7 @@ class OrderApiController extends Controller
                 'created_at',
                 'price',
             ]) + [
-                'category_id' => Category::forFreelance()->random()->id,
+                'category_id' => Category::forFreelance()->get()->random()->id,
                 'user_id' => User::all()->random()->id,
                 'days' => rand(1, 30),
             ]]);

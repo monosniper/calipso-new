@@ -13,17 +13,6 @@ use App\Http\Controllers\Api\LotApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\OrderApiController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::post('/c/orders', [OrderApiController::class, 'cStore']);
 
 Route::post('/sanctum/token', [AuthenticatedSessionController::class, 'getApiToken']);
