@@ -24,13 +24,15 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => ['required', 'exists:categories,id'],
-            'title' => ['required', 'max:350'],
-            'description' => ['required', 'max:10000'],
+            'category_id' => ['exists:categories,id'],
+            'title' => ['required', 'max:1000'],
+            'description' => ['required'],
             'price' => ['min:1'],
             'days' => ['min:1'],
             'isUrgent' => ['sometimes'],
             'isSafe' => ['sometimes'],
+            'created_at' => ['sometimes'],
+            'tags' => ['sometimes'],
         ];
     }
 }
